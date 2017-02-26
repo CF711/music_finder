@@ -1,0 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'finder/style.css' %}" />
+
+<div> Popular Artists </div>
+<ul>
+{% for artist in artist_list %}
+    <li><a href="{% url 'artist' artist_id=artist.id %}">{{artist.name}}</a></li>
+{% endfor %}
+</ul>

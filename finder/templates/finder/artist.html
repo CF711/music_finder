@@ -1,0 +1,7 @@
+<h1>{{ artist.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for album in albums %}
+    <li><a href="{% url 'album' album_id=album.id %}">{{ album.title }}</a></li>
+{% endfor %}

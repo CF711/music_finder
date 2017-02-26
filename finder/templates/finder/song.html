@@ -1,0 +1,5 @@
+<h2>{{ artist.name }} - {{ album.title }} - {{ song.title }}</h2>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<img src="{{album.album_art.url}}" width=150px height=150px></img>
