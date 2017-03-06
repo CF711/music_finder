@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'finder.apps.FinderConfig',
-    'smart_selects'
+    'smart_selects',
+    'embed_video'
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -1,5 +1,30 @@
-<h2>{{ artist.name }} - {{ album.title }} - {{ song.title }}</h2>
+{% extends 'base.html' %}
+{% load embed_video_tags %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% block content %}
+	<h2>
+		<a href="{% url 'artist' artist_id=artist.id %}">{{ artist.name }}</a> - 
+		<a href="{% url 'album' album_id=album.id %}">{{ album.title }}</a> - 
+		{{ song.title }}
+	</h2>
 
-<img src="{{album.album_art.url}}" width=150px height=150px></img>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	{% if album.album_art %}
+		<img src="{{album.album_art.url}}" width=150px height=150px></img> <br />
+	{% endif %}
+
+	{% if song.video %}
+
+		{% video song.video '800x600' %}
+
+	{% endif %}
+
+	{% if same_artist_related %}
+		<a href="{% url 'song' song_id=same_artist_related.id %}">{{ same_artist_related.title }}</a> <br />
+	{% endif %}
+	{% if other_artist_related %}
+		<a href="{% url 'song' song_id=other_artist_related.id %}">{{ other_artist_related.title }}</a> <br />
+	{% endif %}
+
+{% endblock %}
